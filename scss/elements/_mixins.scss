@@ -1,0 +1,57 @@
+// Absolute centerer with optional left and top align
+@mixin centerer($left: 50%, $top: 50%) {
+  -webkit-transform: translate(-$left, -50%);
+  left: $left;
+  position: absolute;
+  top: $top;
+  transform: translate(-$left, -50%);
+}
+
+// Link (<a> tag) animation mixin, 'la' stands for link animation
+@mixin la {
+  color: $light-blue;
+  padding-bottom: 6px;
+  position: relative;
+  @content;
+
+  &:hover {
+    -webkit-transition: color .24s ease-in-out;
+    color: $light-blue;
+    text-decoration: none;
+    transition: color .24s ease-in-out;
+  }
+
+  &::before {
+    -webkit-transform: scaleX(0);
+    -webkit-transition: all .24s ease-in-out;
+    background-color: $light-blue;
+    bottom: 0;
+    content: '';
+    height: 2px;
+    left: 0;
+    position: absolute;
+    transform: scaleX(0);
+    transition: all .24s ease-in-out;
+    visibility: hidden;
+    width: 100%;
+  }
+
+  &:hover {
+    &::before {
+      -webkit-transform: scaleX(1);
+      transform: scaleX(1);
+      visibility: visible;
+    }
+  }
+}
+
+// Background image
+@mixin set-bg-img($file-url) {
+  background: url($file-url) no-repeat 50% / cover;
+}
+
+// Clearfix for containers of floated elements etc
+@mixin clearfix {
+  clear: both;
+  content: '';
+}

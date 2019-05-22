@@ -1,0 +1,51 @@
+// la = link animation. Used for a subtle underline animation on links.
+.la {
+  @include la;
+}
+
+// Register button
+.btn-switch {
+
+  &-container {
+    margin-top: 14px;
+    text-align: center;
+  }
+}
+
+// Submit button
+.btn-submit {
+  background-color: $green;
+  border: 0;
+  color: $white;
+  font-family: $poppins-bold;
+  margin-top: 16px;
+  padding: 12px 0;
+  position: relative;
+  width: 100%;
+
+  &:active {
+    border: 0;
+  }
+
+  &:hover {
+    cursor: pointer;
+
+    &::after {
+      width: 20%;
+    }
+  }
+
+  &::after {
+    @include clearfix;
+    -webkit-clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%);
+    -webkit-transition: width .2s ease;
+    background: lighten($green, 4%);
+    clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%);
+    height: 48px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: width .2s ease;
+    width: 10%;
+  }
+}
